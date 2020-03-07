@@ -1,11 +1,9 @@
-import datetime as dt
-
 ACCEPTED_ANSWERS = ("y", "n")
 INTERESTING_COLUMNS = ["name", "activityType", "ecContribution", "country"]
 DEFAULT_LOCAL_DATA_PATH = "cordis-h2020organizations.csv"
-YEAR = dt.datetime.now().year
 DEFAULT_URL = "https://cordis.europa.eu/data/cordis-h2020organizations.csv"
-COLUMNS_REMAP = {
+APPLY_PRC_FILTER = True
+COLUMNS_MAP = {
     "index": "Rank",
     "name": "Branch",
     "country": "Country",
