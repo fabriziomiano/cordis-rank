@@ -6,6 +6,7 @@ A tool to carry out a very basic analysis to rank R2M using Cordis data.
 The tool has been tested on Ubuntu 18.04 and it requires
 * Python 3.7+ 
 * pandas
+* pytest
 
 In principle, it should work also on Windows and mac OS
 
@@ -40,6 +41,18 @@ Check that now you have `(cordis)` at the beginning of your command line
 pip install -r requirements.txt
 ```
 You're now ready to run it
+
+## Configuration
+Although the tool accepts user input parameters, the file `constants.py`
+contains a number of constans that can be modified according to the type 
+of data to use or analysis to carry out. 
+In particular, the following parameters are defined:
+
+* INTERESTING_COLUMNS: the list of columns to filter the raw Cordis dataset with
+* DEFAULT_LOCAL_DATA_PATH: the default path of the Cordis dataset in this repo
+* DEFAULT_URL: the default URL used to get the Cordis 2020 CSV file
+* APPLY_PRC_FILTER: a boolean to select companies only or all types
+* COLUMNS_MAP: a dict to rename the processed data frame to pretty print ranking results
 
 ## How to run 
 * Navigate to the working copy of the repo you previously cloned
@@ -79,12 +92,22 @@ printer - [INFO] - Overall R2M budget: 10290649.95
 printer - [INFO] - R2M Ranking: 130 out of 19097
 ```
 
-**Note:** if you chose to read the data from the default 2020 Cordis URL:
+**Note:** if you choose to read the data from the default 2020 Cordis URL:
 
 https://cordis.europa.eu/data/cordis-h2020organizations.csv
 
-the process may take a while as pandas need to download the data and 
-the final results may vary, as the CSV file might have been updated with respect to the 
-one in this repo.
+the process may take a while as pandas need to download the data. 
+Furthermore, the final results may vary, as the CSV file might 
+have been updated with respect to the one in this repo.
 
 That's it!
+
+## Tests
+To run the tests from the home of the repo, e.g. `$HOME/cordis`, simply run 
+```
+pytest
+```
+Tests may take a while as the various fixtures refer  both local and remote data
+
+**Do not forget** to rerun the test if you change the configuration parameters in 
+`constants.py`
