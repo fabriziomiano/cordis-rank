@@ -84,6 +84,7 @@ printer - [INFO] - R2M Ranking: 130 out of 19097
 https://cordis.europa.eu/data/cordis-h2020organizations.csv
 
 the process may take a while as pandas need to download the data and 
-the final results may vary, as the CSV file might have been updated.
+the final results may vary, as the CSV file might have been updated with respect to the 
+one in this repo.
 
 That's it!
