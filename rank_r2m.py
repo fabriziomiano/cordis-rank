@@ -1,3 +1,9 @@
+"""
+This script read a Cordis CSV file (from url, or local) and
+tries to Rank the R2M company w.r.t. the EC contribution value.
+It preprocesses the CSV first, calculates the overall R2M budget,
+and it then ranks the single R2M branches, and R2M globally
+"""
 import sys
 from settings import printerlog
 from data_tools import (
@@ -7,11 +13,13 @@ from data_tools import (
 
 def rank_r2m():
     """
-    Print a data_tools frame populated with the R2M-data_tools only where,
-    the first column is the R2M ranking
-    the second column is the R2M branch
-    the third column is the branch country
-    the fourth column is the EC contribution
+    Print a dataframe populated with the R2M-data only.
+    Output example:
+       Rank                 Branch Country  EC Contribution
+    0   264       R2M SOLUTION SRL      IT       6106138.88
+    1   819           R2M SOLUTION      FR       2726124.69
+    2  2825  R2M SOLUTION SPAIN SL      ES       1209711.38
+    3  9799       R2M SOLUTION LTD      UK        248675.00
     :return: None
     """
     try:
