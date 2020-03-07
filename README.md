@@ -37,18 +37,18 @@ source ~/.envs/cordis/bin/activate
 Check that now you have `(cordis)` at the beginning of your command line
 * install the requirements in `requirements.txt`
 ```
-(cordis) pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 You're now ready to run it
 
 ## How to run 
 * Navigate to the working copy of the repo you previously cloned
 ```
-(cordis) cd $HOME/r2m-rank
+cd $HOME/r2m-rank
 ```
 * Run the tool by giving
 ```
-(cordis) python rank_r2m.py
+python rank_r2m.py
 ```
 Provide the requested inputs when prompted, e.g. run on a local CSV file
 ```
