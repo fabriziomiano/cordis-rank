@@ -1,6 +1,7 @@
 # Rank R2M 
 
-A tool to carry out a very basic analysis to rank R2M using Cordis data. 
+A tool to carry out a very basic analysis to rank R2M using Cordis data and in particular
+the EC contribution to the various companies / institutions.
 
 ## Requirements
 The tool has been tested on Ubuntu 18.04 and it requires
