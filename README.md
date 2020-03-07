@@ -46,16 +46,15 @@ You're now ready to run it
 ```
 (cordis) cd $HOME/r2m-rank
 ```
+* Run the tool by giving
 ```
 (cordis) python rank_r2m.py
 ```
-
 Provide the requested inputs when prompted, e.g. run on a local CSV file
-
 ```
 Read Cordis data_tools from URL? [y/n]: n
 ```
-in this example the cordis-h2020organizations.csv file within this repo
+in this example the cordis-h2020organizations.csv file within this repo (leave blank)
 ```
 Data file path (default: cordis-h2020organizations.csv): 
 ```
@@ -80,8 +79,11 @@ printer - [INFO] - Overall R2M budget: 10290649.95
 printer - [INFO] - R2M Ranking: 130 out of 19097
 ```
 
-**Note** that if you chose to read the data from the Cordis default 2020 URL:
+**Note:** if you chose to read the data from the default 2020 Cordis URL:
 
 https://cordis.europa.eu/data/cordis-h2020organizations.csv
 
-the final results may vary, as they might have updated the dataset.  
+the process may take a while as pandas need to download the data and 
+the final results may vary, as the CSV file might have been updated.
+
+That's it!
