@@ -8,7 +8,7 @@ import sys
 from settings import printerlog
 from data_tools import (
     get_cordis_data, r2m_filter, rename_df_columns,
-    groupby_sort, calculate_r2m_budget)
+    groupby_sort, calculate_r2m_budget, get_r2m_ranking)
 
 
 def rank_r2m():
@@ -29,8 +29,7 @@ def rank_r2m():
         df_r2m = rename_df_columns(df_rank)
         printerlog.info("Printing single-branch ranking...\n{}".format(df_r2m))
         r2m_budget = calculate_r2m_budget(df)
-        ranking_mask = df_grouped['ecContribution'] >= r2m_budget
-        r2m_ranking = df_grouped.index[ranking_mask].tolist()[-1] + 1
+        r2m_ranking = get_r2m_ranking(df_grouped, r2m_budget)
         printerlog.info("Overall R2M budget: {}".format(r2m_budget))
         n_companies = df_grouped.shape[0]
         msg = "R2M Ranking: {} out of {}".format(r2m_ranking, n_companies)
