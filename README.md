@@ -4,17 +4,17 @@ A tool to carry out a very basic analysis to rank R2M using Cordis data and in p
 the EC contribution to the various companies / institutions.
 
 ## Requirements
-The tool has been tested on Ubuntu 18.04 and it requires
-* Python 3.7+ 
+The tool has been tested on Ubuntu 18.04, Windows 10, and mac OS Catalina.
+It requires
+* Python 3.6+ 
 * pandas
 * pytest
 
-In principle, it should work also on Windows and mac OS
-
 ## Setup
-It's a typical python3 setup:
+It's a typical python3 setup. Once you installed Python 3.6+ , 
+open a terminal, e.g. in your `$HOME` directory and follow these steps
 
-* Open a terminal, e.g. in your `$HOME` directory
+#### Clone the repo
 * Clone the repo using SSH (your SSH key has to be added to GitLab first)
 ```
 git clone git@gitlab.com:r2mdev/r2m-rank.git
@@ -23,24 +23,48 @@ otherwise use HTTPS authentication
 ```
 git clone https://gitlab.com/r2mdev/r2m-rank.git
 ```
-* Install `virtualenv`:
+#### Install `virtualenv`
+##### Ubuntu 18.04:
 ```
-pip3 install virtualenv
+sudo apt install -y python3-venv
 ```
-* Create a directory to host the virtual environment, e.g. in `$HOME/.envs/cordis`
+
+##### mac OS Catalina:
 ```
-mkdir -p ~/.envs/cordis
+xcode-select --install
+sudo easy_insall virtualenv
 ```
-* Create the virtual environment and activate it
+
+##### Windows 10
+
+`virtualenv` is shipped with the Python3.6+ installation setup 
+
+Then, let's create a new directory in e.g. `$HOME/.envs/r2mrank`
 ```
-virtualenv -p python3 ~/.envs/cordis
-source ~/.envs/cordis/bin/activate
+mkdir -p ~/.envs/r2mrank
 ```
-Check that now you have `(cordis)` at the beginning of your command line
-* install the requirements in `requirements.txt`
+
+
+#### Create and activate the virtual environment
+Assuming you're still in a terminal in your `$HOME` directory
+##### Ubuntu & mac OS
 ```
+python3 -m venv ~/.envs/r2mrank
+source ~/.envs/r2mrank/bin/activate
+```
+##### Windows
+```
+python3 -m venv r2mrank
+r2mrank\Scripts\activate.bat
+```
+Check that now you have `(r2mrank)` at the beginning of your command line
+
+Update `pip` and install the requirements in `requirements.txt`
+```
+pip install --upgrade pip
 pip install -r requirements.txt
 ```
+
 You're now ready to run it
 
 ## Configuration
@@ -58,8 +82,9 @@ In particular, the following parameters are defined:
 ## How to run 
 * Navigate to the working copy of the repo you previously cloned
 ```
-cd $HOME/r2m-rank
+cd r2m-rank
 ```
+
 * Run the tool by giving
 ```
 python rank_r2m.py
@@ -104,7 +129,7 @@ have been updated with respect to the one in this repo.
 That's it!
 
 ## Tests
-To run the tests from the home of the repo, e.g. `$HOME/cordis`, simply run 
+To run the tests from the home of the repo, e.g. `$HOME/r2mrank`, simply run 
 ```
 pytest
 ```
