@@ -160,7 +160,7 @@ have been updated with respect to the one in this repo.
 That's it!
 
 ## Tests
-To run the tests from the home of the repo, e.g. `$HOME/r2mrank`, simply run 
+To run the tests from the home of the repo, e.g. `$HOME/r2m-rank`, simply run 
 ```
 pytest
 ```
