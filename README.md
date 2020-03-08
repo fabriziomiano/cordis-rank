@@ -71,12 +71,15 @@ You're now ready to run it
 Although the tool accepts user input parameters, the file `constants.py`
 contains a number of constans that can be modified according to the type 
 of data to use or analysis to carry out. 
-In particular, the following parameters are defined:
+In particular, here are some of the parameters:
 
+* COMPANY_NAME: the name of the company to rank
+* ACTIVITY_TYPE_FILTER: e.g. "PRC" to consider only companies
+* APPLY_PRC_FILTER: boolean: apply the activity-type filter if True
+* BUDGET_COLUMN_NAME: name of the budget / EC contribution column, e.g. "ecContribution"
 * INTERESTING_COLUMNS: the list of columns to filter the raw Cordis dataset with
 * DEFAULT_LOCAL_DATA_PATH: the default path of the Cordis dataset in this repo
 * DEFAULT_URL: the default URL used to get the Cordis 2020 CSV file
-* APPLY_PRC_FILTER: a boolean to select companies only or all types
 * COLUMNS_MAP: a dict to rename the processed data frame to pretty print ranking results
 
 ## How to run 
@@ -87,9 +90,33 @@ cd r2m-rank
 
 * Run the tool by giving
 ```
-python rank_r2m.py
+python rank.py
 ```
-Provide the requested inputs when prompted, e.g. run on a local CSV file
+An initialization output should show up, saying
+```
+config - [INFO] - --------------------------------------------------
+config - [INFO] - Initializing with the following configuration
+config - [INFO] - Check constants.py to change any of the following
+config - [INFO] - --------------------------------------------------
+config - [INFO] - COMPANY_NAME: R2M
+config - [INFO] - ACTIVITY_TYPE_FILTER: PRC
+config - [INFO] - APPLY_ACTIVITY_FILTER: True
+config - [INFO] - --------------------------------------------------
+config - [INFO] - Assuming an input dataset with the following features
+config - [INFO] - --------------------------------------------------
+config - [INFO] - BUDGET_COLUMN_NAME: ecContribution
+config - [INFO] - COMPANY_COLUMN_NAME: name
+config - [INFO] - ACTIVITY_COLUMN_NAME: activityType
+config - [INFO] - COUNTRY_COLUMN_NAME: country
+config - [INFO] - --------------------------------------------------
+config - [INFO] - Fallback data sources
+config - [INFO] - --------------------------------------------------
+config - [INFO] - DEFAULT_URL: https://cordis.europa.eu/data/cordis-h2020organizations.csv
+config - [INFO] - DEFAULT_LOCAL_DATA_PATH: cordis-h2020organizations.csv
+config - [INFO] - --------------------------------------------------
+```
+at the end of which you will be prompted to whether download the data or 
+run on a local CSV file
 ```
 Read Cordis data_tools from URL? [y/n]: n
 ```
@@ -102,20 +129,24 @@ and you should get the following output
 data_tools - [INFO] - Reading data_tools from cordis-h2020organizations.csv
 data_tools - [INFO] - Data frame loaded in 0.5 seconds
 ```
-then specify whether you want to select only companies, i.e. `activityType == "PRC"`
+then, if you set the activity-type filter to true in `constants.py`, 
+you'll get a message informing you about the filter being applied
 ```
-Consider companies only? (activityType = "PRC") [y/n]: y
+data_tools - [INFO] - Considering only activityType = PRC
 ```
-and you should get the following results 
+lastly, you should get the following results 
 ```
-printer - [INFO] - Printing single-branch ranking...
+printer - [INFO] - --------------------------------------------------
+printer - [INFO] - Ranking:
    Rank                 Branch Country  EC Contribution
 0   264       R2M SOLUTION SRL      IT       6106138.88
 1   819           R2M SOLUTION      FR       2726124.69
 2  2825  R2M SOLUTION SPAIN SL      ES       1209711.38
 3  9799       R2M SOLUTION LTD      UK        248675.00
-printer - [INFO] - Overall R2M budget: 10290649.95
-printer - [INFO] - R2M Ranking: 130 out of 19097
+printer - [INFO] - --------------------------------------------------
+printer - [INFO] - Overall company budget: 10290649.95
+printer - [INFO] - Company Ranking: 130 out of 19097
+printer - [INFO] - Done
 ```
 
 **Note:** if you choose to read the data from the default 2020 Cordis URL:
@@ -133,7 +164,8 @@ To run the tests from the home of the repo, e.g. `$HOME/r2mrank`, simply run
 ```
 pytest
 ```
-Tests may take a while as the various fixtures refer  both local and remote data
+Tests may take a while as the data have to be downloaded twice to run the various 
+fixtures. 
 
-**Do not forget** to rerun the test if you change the configuration parameters in 
+**Do not forget** to rerun the test if you change any of  configuration parameters in 
 `constants.py`
