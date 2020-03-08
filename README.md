@@ -1,7 +1,8 @@
-# Rank R2M 
+# Cordis Rank 
 
-A tool to carry out a very basic analysis to rank R2M using Cordis data and in particular
-the EC contribution to the various companies / institutions.
+A tool to rank a company/institute based on EC contributions using 
+[Cordis](https://cordis.europa.eu/data) dataset.
+
 
 ## Requirements
 The tool has been tested on Ubuntu 18.04, Windows 10, and mac OS Catalina.
@@ -17,11 +18,11 @@ open a terminal, e.g. in your `$HOME` directory and follow these steps
 #### Clone the repo
 * Clone the repo using SSH (your SSH key has to be added to GitLab first)
 ```
-git clone git@gitlab.com:r2mdev/r2m-rank.git
+git clone git@github.com:fabriziomiano/cordis-rank.git
 ```
 otherwise use HTTPS authentication
 ```
-git clone https://gitlab.com/r2mdev/r2m-rank.git
+git clone https://github.com/fabriziomiano/cordis-rank.git
 ```
 #### Install `virtualenv`
 ##### Ubuntu 18.04:
@@ -39,9 +40,9 @@ sudo easy_insall virtualenv
 
 `virtualenv` is shipped with the Python3.6+ installation setup 
 
-Then, let's create a new directory in e.g. `$HOME/.envs/r2mrank`
+Then, let's create a new directory in e.g. `$HOME/.envs/cordis-rank`
 ```
-mkdir -p ~/.envs/r2mrank
+mkdir -p ~/.envs/cordis-rank
 ```
 
 
@@ -49,15 +50,15 @@ mkdir -p ~/.envs/r2mrank
 Assuming you're still in a terminal in your `$HOME` directory
 ##### Ubuntu & mac OS
 ```
-python3 -m venv ~/.envs/r2mrank
-source ~/.envs/r2mrank/bin/activate
+python3 -m venv ~/.envs/cordis-rank
+source ~/.envs/cordis-rank/bin/activate
 ```
 ##### Windows
 ```
-python3 -m venv r2mrank
-r2mrank\Scripts\activate.bat
+python3 -m venv cordis-rank
+cordis-rank\Scripts\activate.bat
 ```
-Check that now you have `(r2mrank)` at the beginning of your command line
+Check that now you have `(cordis-rank)` at the beginning of your command line
 
 Update `pip` and install the requirements in `requirements.txt`
 ```
@@ -85,7 +86,7 @@ In particular, here are some of the parameters:
 ## How to run 
 * Navigate to the working copy of the repo you previously cloned
 ```
-cd r2m-rank
+cd cordis-rank
 ```
 
 * Run the tool by giving
@@ -98,8 +99,8 @@ config - [INFO] - --------------------------------------------------
 config - [INFO] - Initializing with the following configuration
 config - [INFO] - Check constants.py to change any of the following
 config - [INFO] - --------------------------------------------------
-config - [INFO] - COMPANY_NAME: R2M
-config - [INFO] - ACTIVITY_TYPE_FILTER: PRC
+config - [INFO] - COMPANY_NAME: THE UNIVERSITY OF SUSSEX
+config - [INFO] - ACTIVITY_TYPE_FILTER: HES
 config - [INFO] - APPLY_ACTIVITY_FILTER: True
 config - [INFO] - --------------------------------------------------
 config - [INFO] - Assuming an input dataset with the following features
@@ -132,20 +133,17 @@ data_tools - [INFO] - Data frame loaded in 0.5 seconds
 then, if you set the activity-type filter to true in `constants.py`, 
 you'll get a message informing you about the filter being applied
 ```
-data_tools - [INFO] - Considering only activityType = PRC
+data_tools - [INFO] - Considering only activityType = HES
 ```
 lastly, you should get the following results 
 ```
 printer - [INFO] - --------------------------------------------------
 printer - [INFO] - Ranking:
-   Rank                 Branch Country  EC Contribution
-0   264       R2M SOLUTION SRL      IT       6106138.88
-1   819           R2M SOLUTION      FR       2726124.69
-2  2825  R2M SOLUTION SPAIN SL      ES       1209711.38
-3  9799       R2M SOLUTION LTD      UK        248675.00
+   Rank       Company / Institute Country  EC Contribution
+0   124  THE UNIVERSITY OF SUSSEX      UK      43154405.56
 printer - [INFO] - --------------------------------------------------
-printer - [INFO] - Overall company budget: 10290649.95
-printer - [INFO] - Company Ranking: 130 out of 19097
+printer - [INFO] - Overall company budget: 43154405.56
+printer - [INFO] - Company Ranking: 124 out of 1753
 printer - [INFO] - Done
 ```
 
@@ -160,7 +158,7 @@ have been updated with respect to the one in this repo.
 That's it!
 
 ## Tests
-To run the tests from the home of the repo, e.g. `$HOME/r2m-rank`, simply run 
+To run the tests from the home of the repo, e.g. `$HOME/cordis-rank`, simply run 
 ```
 pytest
 ```
