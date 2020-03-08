@@ -13,7 +13,7 @@ INTERESTING_COLUMNS = [
     COUNTRY_COLUMN_NAME]
 COLUMNS_MAP = {
     "index": "Rank",
-    COMPANY_COLUMN_NAME: "Branch",
+    COMPANY_COLUMN_NAME: "Company / Institute",
     COUNTRY_COLUMN_NAME: "Country",
     BUDGET_COLUMN_NAME: "EC Contribution"
 }
