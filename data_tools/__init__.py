@@ -106,7 +106,7 @@ def company_filter(df):
     :param df: pandas.DataFrame object
     :return: pandas.DataFrame object
     """
-    df = df[df.name.str.contains(COMPANY_NAME)]
+    df = df[df[COMPANY_COLUMN_NAME].str.contains(COMPANY_NAME)]
     df.reset_index(inplace=True)
     return df
 
@@ -119,7 +119,8 @@ def calculate_company_budget(df):
     :param df: pandas.DataFrame object
     :return: None
     """
-    return df[df.name.str.contains(COMPANY_NAME)][BUDGET_COLUMN_NAME].sum()
+    mask = df[COMPANY_COLUMN_NAME].str.contains(COMPANY_NAME)
+    return df[mask][BUDGET_COLUMN_NAME].sum()
 
 
 def get_company_ranking(df_grouped, budget):
