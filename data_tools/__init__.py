@@ -131,7 +131,7 @@ def get_company_ranking(df_grouped, budget):
     :param budget: float
     :return: int
     """
-    ranking_mask = df_grouped['ecContribution'] >= budget
+    ranking_mask = df_grouped[BUDGET_COLUMN_NAME] >= budget
     try:
         ranking = df_grouped.index[ranking_mask].tolist()[-1] + 1
     except IndexError:
