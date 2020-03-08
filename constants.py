@@ -1,11 +1,19 @@
 ACCEPTED_ANSWERS = ("y", "n")
-INTERESTING_COLUMNS = ["name", "activityType", "ecContribution", "country"]
+COMPANY_NAME = "R2M"
+ACTIVITY_TYPE_FILTER = "PRC"
+APPLY_ACTIVITY_FILTER = True
+BUDGET_COLUMN_NAME = "ecContribution"
+COMPANY_COLUMN_NAME = "name"
+ACTIVITY_COLUMN_NAME = "activityType"
+COUNTRY_COLUMN_NAME = "country"
 DEFAULT_LOCAL_DATA_PATH = "cordis-h2020organizations.csv"
 DEFAULT_URL = "https://cordis.europa.eu/data/cordis-h2020organizations.csv"
-APPLY_PRC_FILTER = True
+INTERESTING_COLUMNS = [
+    COMPANY_COLUMN_NAME, ACTIVITY_COLUMN_NAME, BUDGET_COLUMN_NAME,
+    COUNTRY_COLUMN_NAME]
 COLUMNS_MAP = {
     "index": "Rank",
-    "name": "Branch",
-    "country": "Country",
-    "ecContribution": "EC Contribution"
+    COMPANY_COLUMN_NAME: "Branch",
+    COUNTRY_COLUMN_NAME: "Country",
+    BUDGET_COLUMN_NAME: "EC Contribution"
 }
