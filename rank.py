@@ -29,6 +29,11 @@ def rank():
         df = get_cordis_data()
         df_grouped = groupby_sort(df)
         df_rank = company_filter(df_grouped)
+        if df_rank.empty:
+            msg = "Empty data frame!"
+            printerlog.error(msg)
+            printerlog.error(" Check the company name and/or filter. Quitting")
+            sys.exit(0)
         df_company = rename_df_columns(df_rank)
         printerlog.info("-" * 50)
         printerlog.info("Ranking:\n{}".format(df_company))
