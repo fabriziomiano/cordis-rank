@@ -1,3 +1,4 @@
+import re
 import time
 import logging
 import pandas as pd
@@ -27,7 +28,7 @@ def get_cordis_data(url=None, data_path=None, test=False):
         read_from_url = False
         while read_from_url not in ACCEPTED_ANSWERS:
             msg = "Read Cordis data from URL? [y/n]: "
-            read_from_url = input(msg)
+            read_from_url = input(msg).lower()
         read_from_url = read_from_url == "y"
         if read_from_url:
             url = input("Please provide url (default: {}): ".format(DEFAULT_URL))
@@ -106,7 +107,8 @@ def company_filter(df):
     :param df: pandas.DataFrame object
     :return: pandas.DataFrame object
     """
-    df = df[df[COMPANY_COLUMN_NAME].str.contains(COMPANY_NAME)]
+    mask = df[COMPANY_COLUMN_NAME].str.contains(COMPANY_NAME, flags=re.IGNORECASE)
+    df = df[mask]
     df.reset_index(inplace=True)
     return df
 
@@ -119,7 +121,7 @@ def calculate_company_budget(df):
     :param df: pandas.DataFrame object
     :return: None
     """
-    mask = df[COMPANY_COLUMN_NAME].str.contains(COMPANY_NAME)
+    mask = df[COMPANY_COLUMN_NAME].str.contains(COMPANY_NAME, flags=re.IGNORECASE)
     return df[mask][BUDGET_COLUMN_NAME].sum()
 
 
