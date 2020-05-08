@@ -1,5 +1,4 @@
 # Cordis Rank 
-
 A tool to rank a company/institute based on EC contributions using 
 [Cordis](https://cordis.europa.eu/data) dataset.
 
@@ -16,11 +15,6 @@ It's a typical python3 setup. Once you installed Python 3.6+ ,
 open a terminal, e.g. in your `$HOME` directory and follow these steps
 
 #### Clone the repo
-* Clone the repo using SSH (your SSH key has to be added to GitLab first)
-```
-git clone git@github.com:fabriziomiano/cordis-rank.git
-```
-otherwise use HTTPS authentication
 ```
 git clone https://github.com/fabriziomiano/cordis-rank.git
 ```
