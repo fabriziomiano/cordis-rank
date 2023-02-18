@@ -94,7 +94,7 @@ def groupby_sort(df):
     :return:
     """
     list_columns_group_by = [COMPANY_COLUMN_NAME, COUNTRY_COLUMN_NAME]
-    df = df.groupby(list_columns_group_by, as_index=False).sum()
+    df = df.groupby(list_columns_group_by, as_index=False).sum(BUDGET_COLUMN_NAME)
     df = df.sort_values(
         by=BUDGET_COLUMN_NAME, ascending=False).reset_index(drop=True)
     return df
